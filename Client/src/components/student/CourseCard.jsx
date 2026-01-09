@@ -13,7 +13,7 @@ const  CourseCard = ({course}) => {
         {/* Course title */}
         <h3 className='text-base font-semibold'>{course.courseTitle}</h3>
         {/* Educator Name */}
-        <p className='text-gray-500'>{course.educator.name}</p>
+        <p className='text-gray-500'>Pratyush Pandey</p>
         <div className='flex items-center space-x-2'>
           {/* Ratings */}
           <p>{calculateRating(course)}</p>
