@@ -5,12 +5,14 @@ import Loading from "../../components/student/Loading";
 import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import Footer from "../../components/student/Footer";
+import YouTube from 'react-youtube'
 
 function CourseDetails() {
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
   const [openSection, setOpenSection] = useState({});
   const [isAllreadyEnrolled , setIsAlreadyEnrolled] = useState(false);
+  const [playerData , setPlayerData] = useState(null);
 
 
   const {
@@ -141,9 +143,13 @@ function CourseDetails() {
                             <p>{lecture.lectureTitle}</p>
                             <div className="flex gap-2 text-xs">
                               {lecture.isPreviewFree && (
-                                <span className="text-blue-500 cursor-pointer">
+                                <p
+                                onClick={()=> setPlayerData({
+                                  videoId: lecture.lectureUrl.split('/').pop()
+                                })}
+                                 className="text-blue-500 cursor-pointer">
                                   Preview
-                                </span>
+                                </p>
                               )}
                               <span>
                                 {humanizeDuration(
@@ -184,11 +190,19 @@ function CourseDetails() {
                 bg-white z-10
                 overflow-visible sm:overflow-hidden"
         >
-          <img
+          {
+            playerData ?
+            
+             <YouTube videoId={playerData.videoId} opts={{playerVars: {
+              autoplay: 1
+             }}} isframeClass='w-full aspect' />
+            :<img
             src={courseData.courseThumbnail}
             alt="course thumbnail"
             className="w-full aspect-video object-contain sm:object-cover"
           />
+          }
+          
 
           <div className="px-6 py-6 space-y-4">
             <div className="flex items-center gap-2">
