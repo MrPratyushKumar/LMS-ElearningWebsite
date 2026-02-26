@@ -2,8 +2,8 @@
 
 A production-ready e-learning platform where students can browse, purchase, and track courses, and educators can publish and manage their own course content — all backed by real payment processing and cloud media storage.
 
-**Live Demo:** _Add your deployed URL here_  
-**Backend API:** _Add your API URL here_
+**Live Demo:** https://lms-elearning-website.vercel.app/  
+**Backend API:** https://lms-elearning-website-server.vercel.app/
 
 ---
 
